@@ -1,14 +1,14 @@
 <template>
   <div id="app">
+    <h1>Todos</h1>
+    <TodoForm @todo-added="handleTodoAdded" />
     <TodoList />
-    <TodoForm @add-todo="addTodo" />
   </div>
 </template>
 
 <script>
 import TodoList from './components/TodoList.vue'
 import TodoForm from './components/TodoForm.vue'
-import { response } from 'express';
 
 export default {
   name: 'App',
@@ -17,15 +17,7 @@ export default {
    TodoForm,
   },
   methods: {
-    async addTodo(todo) {
-      const reponse = await fetch('http://localhost:8080/todos', {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-        },
-        body: JSON.stringify(todo),
-      });
-      const data = await response.json();
+    handleTodoAdded(data) {
       console.log(data);
     },
   },
@@ -40,5 +32,8 @@ export default {
   text-align: center;
   color: #2c3e50;
   margin-top: 60px;
+}
+#list {
+  list-style-type: none;
 }
 </style>

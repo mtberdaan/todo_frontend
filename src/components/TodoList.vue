@@ -1,7 +1,7 @@
 <template>
     <div>
-        <h1>Todos</h1>
-        <ul>
+        <h2>current todos</h2>
+        <ul id="list">
             <li v-for="todo in todos" :key="todo.id">
                 {{ todo.title }}
             </li>
