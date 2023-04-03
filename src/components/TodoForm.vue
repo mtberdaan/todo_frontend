@@ -7,6 +7,8 @@
 </template>
 
 <script>
+import axios from 'axios';
+
 export default {
     data() {
         return {
@@ -18,14 +20,8 @@ export default {
             const todo = {
                 title: this.title,
             };
-            const response = await fetch('http://localhost:8080/todos', {
-                method: 'POST',
-                headers: {
-                'Content-Type': 'application/json',
-                },
-                body: JSON.stringify(todo),
-            });
-            const data = await response.json();
+            const response = await axios.post('http://localhost:8080/todos', todo);
+            const data = await response.data;
             console.log(data);
             this.$emit('todo-added', data);
             this.title = '';

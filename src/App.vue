@@ -2,7 +2,7 @@
   <div id="app">
     <h1>Todos</h1>
     <TodoForm @todo-added="handleTodoAdded" />
-    <TodoList />
+    <TodoList ref="todoList"/>
   </div>
 </template>
 
@@ -19,6 +19,7 @@ export default {
   methods: {
     handleTodoAdded(data) {
       console.log(data);
+      this.$refs.todoList.getTodos();
     },
   },
 };
