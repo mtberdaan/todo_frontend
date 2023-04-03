@@ -1,9 +1,10 @@
 <template>
     <div>
         <h2>current todos</h2>
+        <h3>todo - created</h3>
         <ul id="list">
             <li v-for="todo in todos" :key="todo.id">
-                {{ todo.title }}
+                 {{ todo.title }} - {{ new Date(todo.CreatedAt).toLocaleString('en-GB', { day: 'numeric', month: 'short', year: 'numeric' }) }}
             </li>
         </ul>
     </div>
